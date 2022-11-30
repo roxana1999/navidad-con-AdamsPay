@@ -1,0 +1,53 @@
+<div class="espacio"></div>
+<h3>Crear juguete</h3>
+<div class="espacio-15"></div>
+<div *ngIf="success; else mostrarForm">
+  <div class="alert alert-success" role="alert">
+    {{ mensaje }}
+  </div>
+  <button class="btn btn-secondary" routerLink="/">Volver</button>
+</div>
+<ng-template #mostrarForm>
+  <mat-form-field appearance="fill">
+    <mat-label>Elije una categoría</mat-label>
+    <mat-select
+      [formControl]="categoriaControl"
+      [(ngModel)]="categoria"
+    >
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let categoria of listaCategorias" [value]="categoria">
+        {{ categoria.nombre }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="form-group">
+    Nombre {{ juguete.nombre }}
+    <input class="form-control" [(ngModel)]="juguete.nombre" /><br />
+  </div>
+  <div class="form-group">
+    Descripción
+    <input class="form-control" [(ngModel)]="juguete.descripcion" /><br />
+  </div>
+  <div class="form-group">
+    Precio de Venta
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="juguete.precioVenta"
+    /><br />
+  </div>
+  <div class="form-group">
+    URL de la imagen
+    <input class="form-control" [(ngModel)]="juguete.url_imagen" /><br />
+  </div>
+  <div class="espacio"></div>
+  <button (click)="crearJuguete()" class="btn btn-primary">
+    Crear juguete
+  </button>
+</ng-template>
+<div class="espacio"></div>
+<div *ngIf="warning" class="alert alert-warning" role="alert">
+  {{ mensaje }}
+</div>
+
+<router-outlet></router-outlet>
