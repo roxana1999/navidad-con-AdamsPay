@@ -4,11 +4,13 @@ import { CategoriasComponent } from './components/categorias/categorias.componen
 import { RouterModule, Routes } from '@angular/router';
 import { CrearJugueteComponent } from './components/juguetes/crear-juguete/crear-juguete.component';
 import { MostrarJuguetesComponent } from './components/juguetes/mostrar-juguetes/mostrar-juguetes.component';
+import { MiCarritoComponent } from './components/mi-carrito/mi-carrito.component';
 
 const routes: Routes = [
   {path:'categorias', component: CategoriasComponent},
   {path:'juguetes', component: MostrarJuguetesComponent},
   {path:'juguetes/crearJuguete', component: CrearJugueteComponent},
+  {path:'miCarrito', component: MiCarritoComponent}, 
 ]
 
 @NgModule({

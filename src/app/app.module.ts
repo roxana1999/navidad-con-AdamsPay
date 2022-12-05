@@ -11,13 +11,15 @@ import { CrearJugueteComponent } from './components/juguetes/crear-juguete/crear
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { MostrarJuguetesComponent } from './components/juguetes/mostrar-juguetes/mostrar-juguetes.component';
+import { MiCarritoComponent } from './components/mi-carrito/mi-carrito.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoriasComponent,
     CrearJugueteComponent,
-    MostrarJuguetesComponent
+    MostrarJuguetesComponent,
+    MiCarritoComponent
   ],
   imports: [
     BrowserModule,

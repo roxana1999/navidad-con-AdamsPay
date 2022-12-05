@@ -1,0 +1,31 @@
+<div class="espacio"></div>
+<div *ngIf="estaVacio">
+  {{mensaje}}
+</div>
+<div *ngIf="miCarrito.detalles.length > 0">
+  <div class="table-responsive align-middle">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="column">Nombre</th>
+          <th scope="column">Precio</th>
+          <th scope="column">Cantidad</th>
+          <th scope="column">Total producto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="align-middle" *ngFor="let detalle of miCarrito.detalles">
+          <td>
+            <img src="{{detalle.juguete.url_imagen}}" style="max-width: 100px;">
+            {{ detalle.juguete.nombre }}
+          </td>
+          <td>{{ formatearNumero(detalle.juguete.precioVenta) }}</td>
+          <td>{{ detalle.cantidad }}</td>
+          <td>{{ formatearNumero(detalle.totalDetalle)}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -18,7 +18,10 @@
         <div class="espacio"></div>
       </div>
     </div>
-    <button mat-raised-button color="primary">Añadir al carrito</button>
+    <button (click)="agregarAlCarrito(j)" mat-raised-button color="primary">Añadir al carrito</button>
+    <div *ngIf="success">
+      {{mensaje}}
+    </div>
   </mat-card>
 </div>
 <router-outlet></router-outlet>

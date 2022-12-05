@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { formatearNumero } from 'src/app/generic-functions/formatearNumero';
+import { Detalle } from 'src/app/models/Carrito';
 import { Juguete } from 'src/app/models/Juguete';
 import { DataServices } from 'src/app/services/data.services';
+import { obtenerCarrito } from '../../mi-carrito/functions/obtenerCarrito';
 
 @Component({
   selector: 'app-mostrar-juguetes',
@@ -10,6 +12,8 @@ import { DataServices } from 'src/app/services/data.services';
 })
 export class MostrarJuguetesComponent implements OnInit {
   listaJuguetes: Juguete[] = [];
+  success!: boolean;
+  mensaje!: string;
   formatearNumero = formatearNumero;
   
   constructor(private dataServices: DataServices){}
@@ -20,4 +24,12 @@ export class MostrarJuguetesComponent implements OnInit {
     });
   }
 
+  agregarAlCarrito(juguete: Juguete){
+    let miCarrito = obtenerCarrito();
+    miCarrito.detalles.push(new Detalle(juguete, 1));
+    miCarrito.total+=juguete.precioVenta;
+    localStorage.setItem('miCarrito', JSON.stringify(miCarrito));
+    this.success=true;
+    this.mensaje="Añadido al carrito";
+  }
 }
