@@ -1,0 +1,24 @@
+<div class="espacio"></div>
+<div class="d-flex justify-content-center align-items-stretch flex-wrap">
+  <mat-card class="mat-card" *ngFor="let j of listaJuguetes">
+    <div class="h-100 d-flex flex-column justify-content-between">
+      <div>
+        <mat-card-content class="pb-0">
+          <img
+            style="max-width: 200px; min-width: 100px"
+            src="{{ j.url_imagen }}"
+          />
+        </mat-card-content>
+      </div>
+      <div class="text-center">
+        <mat-card-header class="d-flex flex-column pt-0">
+          <b>{{ j.nombre }}</b>
+          {{ formatearNumero(j.precioVenta) }} ₲
+        </mat-card-header>
+        <div class="espacio"></div>
+      </div>
+    </div>
+    <button mat-raised-button color="primary">Añadir al carrito</button>
+  </mat-card>
+</div>
+<router-outlet></router-outlet>

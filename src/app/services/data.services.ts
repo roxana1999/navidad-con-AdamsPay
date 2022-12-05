@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Categoria } from './models/Categoria';
-import { Juguete } from './models/Juguete';
+import { Categoria } from '../models/Categoria';
+import { Juguete } from '../models/Juguete';
 
 @Injectable()
 export class DataServices {

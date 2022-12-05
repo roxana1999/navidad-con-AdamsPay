@@ -1,5 +1,13 @@
 .espacio{
     height: 30px;
 }
+.mat-card{
+    width: min-content;
+    margin: 10px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

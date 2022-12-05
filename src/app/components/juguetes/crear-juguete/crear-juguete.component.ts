@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { ThemePalette } from '@angular/material/core';
-import { DataServices } from 'src/app/data.services';
+import { DataServices } from 'src/app/services/data.services';
 import { Categoria } from 'src/app/models/Categoria';
 import { Juguete } from 'src/app/models/Juguete';
 
@@ -14,11 +13,11 @@ export class CrearJugueteComponent implements OnInit {
   juguete = new Juguete();
   categoria = new Categoria("");
   categoriaControl = new FormControl<string | null>(null, Validators.required);
-  listaCategorias!: Categoria[];
-  colorControl = new FormControl('primary' as ThemePalette);
+  listaCategorias: Categoria[] = [];
+  listaJuguetes: Juguete[] = [];
   success!: boolean;
   warning!: boolean;
-  mensaje!: boolean;
+  mensaje!: string;
 
   constructor(private dataServices: DataServices) { }
   
@@ -31,10 +30,16 @@ export class CrearJugueteComponent implements OnInit {
     this.dataServices.cargarCategorias().subscribe((misCategorias) => {
       this.listaCategorias = Object.values(misCategorias);
     });
+    this.dataServices.cargarJuguetes().subscribe((misJuguetes) => {
+      this.listaJuguetes = Object.values(misJuguetes);
+    });
   }
 
   crearJuguete(){
-
+    //TODO: Validar inputs de juguete
+    this.listaJuguetes.push(this.juguete);
+    this.dataServices.guardarJuguetes(this.listaJuguetes);
+    this.success=true; this.mensaje="Juguete creado exitosamente";
   }
 
 }
