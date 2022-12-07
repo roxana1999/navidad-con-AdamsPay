@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { DataServices } from './services/data.services';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { MostrarJuguetesComponent } from './components/juguetes/mostrar-juguetes/mostrar-juguetes.component';
 import { MiCarritoComponent } from './components/mi-carrito/mi-carrito.component';
+import { CrearDeudaComponent } from './components/adamspay/crear-deuda/crear-deuda.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { MiCarritoComponent } from './components/mi-carrito/mi-carrito.component
     CategoriasComponent,
     CrearJugueteComponent,
     MostrarJuguetesComponent,
-    MiCarritoComponent
+    MiCarritoComponent,
+    CrearDeudaComponent
   ],
   imports: [
     BrowserModule,
