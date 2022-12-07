@@ -2,26 +2,50 @@
 <div *ngIf="estaVacio">
   {{mensaje}}
 </div>
-<div *ngIf="miCarrito.detalles.length > 0">
+<div *ngIf="miCarrito.detalles.length > 0" style="max-width: 800px;">
   <div class="table-responsive align-middle">
-    <table class="table">
+    <table class="table text-end align-middle">
       <thead>
         <tr>
-          <th scope="column">Nombre</th>
+          <th class="text-start" scope="column">Producto</th>
           <th scope="column">Precio</th>
-          <th scope="column">Cantidad</th>
-          <th scope="column">Total producto</th>
+          <th class="text-center" scope="column">Cantidad</th>
+          <th scope="column">Total</th>
+          <th scope="column"></th>
         </tr>
       </thead>
       <tbody>
-        <tr class="align-middle" *ngFor="let detalle of miCarrito.detalles">
-          <td>
-            <img src="{{detalle.juguete.url_imagen}}" style="max-width: 100px;">
-            {{ detalle.juguete.nombre }}
+        <tr *ngFor="let detalle of miCarrito.detalles; let i = index">
+          <td class="text-start">
+            <div class="d-flex align-items-center gap-10">
+              <img class="imagenCarrito" src="{{detalle.juguete.url_imagen}}">
+              {{ detalle.juguete.nombre }}
+            </div>
           </td>
-          <td>{{ formatearNumero(detalle.juguete.precioVenta) }}</td>
-          <td>{{ detalle.cantidad }}</td>
-          <td>{{ formatearNumero(detalle.totalDetalle)}}</td>
+          <td class="text-nowrap">{{formatearNumero(detalle.juguete.precioVenta)}} ₲</td>
+          <td>
+            <div class="contenedorCantidad">
+              <button type="button" class="myButton" (click)="disminuirCantidad(i)" >-</button>
+              <div>{{detalle.cantidad}}</div>
+              <button type="button" class="myButton" (click)="aumentarCantidad(i)">+</button>
+            </div>
+          </td>
+          <td style="min-width: 100px;" class="text-nowrap">{{formatearNumero(detalle.totalDetalle)}} ₲</td>
+          <td class="text-start">
+            <button class="myButton" (click)="quitarDelCarrito(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan=3 class="fw-bold">Total:</td>
+          <td>{{formatearNumero(miCarrito.total)}} ₲</td>
+          <td class="text-start">
+            <button mat-fab extended color="primary" style="box-shadow: none;">
+              <mat-icon>shopping_cart</mat-icon>
+              Comprar
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>

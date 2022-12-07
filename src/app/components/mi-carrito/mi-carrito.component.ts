@@ -18,7 +18,32 @@ export class MiCarritoComponent implements OnInit {
   ngOnInit(): void {
     this.miCarrito = obtenerCarrito();
     if (this.miCarrito.total==0){
-      this.mensaje="Carrito vacío";
+      this.mensaje="Carrito vacío.";
+      this.estaVacio=true;
+    }
+  }
+
+  disminuirCantidad(i: number){
+    if (this.miCarrito.detalles[i].cantidad==1) return;
+    this.miCarrito.detalles[i].cantidad--;
+    this.miCarrito.detalles[i].totalDetalle-= this.miCarrito.detalles[i].juguete.precioVenta;
+    this.miCarrito.total-= this.miCarrito.detalles[i].juguete.precioVenta;
+    localStorage.setItem('miCarrito', JSON.stringify(this.miCarrito));
+  }
+
+  aumentarCantidad(i: number){
+    this.miCarrito.detalles[i].cantidad++;
+    this.miCarrito.detalles[i].totalDetalle+= this.miCarrito.detalles[i].juguete.precioVenta;
+    this.miCarrito.total+= this.miCarrito.detalles[i].juguete.precioVenta;
+    localStorage.setItem('miCarrito', JSON.stringify(this.miCarrito));
+  }
+
+  quitarDelCarrito(i: number){
+    this.miCarrito.total-=this.miCarrito.detalles[i].totalDetalle;
+    this.miCarrito.detalles.splice(i, 1);
+    localStorage.setItem('miCarrito', JSON.stringify(this.miCarrito));
+    if (this.miCarrito.total==0){
+      this.mensaje="Carrito vacío.";
       this.estaVacio=true;
     }
   }

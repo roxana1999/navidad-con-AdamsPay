@@ -6,6 +6,30 @@
     margin: 10px;
 }
 
+.myButton{
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 5px;
+}
+
+.contenedorCantidad{
+    border: 2px gainsboro solid; 
+    width: fit-content; 
+    margin: auto;
+}
+
+.contenedorCantidad>div{
+    min-width: 20px; display: inline-block; text-align: center;
+}
+
+.imagenCarrito{
+    width: 70px;
+}
+
+.gap-10{
+    gap: 10px;
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 

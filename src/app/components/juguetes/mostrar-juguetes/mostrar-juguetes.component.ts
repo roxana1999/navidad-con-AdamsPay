@@ -26,7 +26,15 @@ export class MostrarJuguetesComponent implements OnInit {
 
   agregarAlCarrito(juguete: Juguete){
     let miCarrito = obtenerCarrito();
-    miCarrito.detalles.push(new Detalle(juguete, 1));
+    let index = miCarrito.detalles.findIndex( detalle => detalle.juguete.nombre == juguete.nombre);
+    console.log(index);
+    if (index == -1){
+      miCarrito.detalles.push(new Detalle(juguete, 1));
+    }
+    else {
+      miCarrito.detalles[index].cantidad++;
+      miCarrito.detalles[index].totalDetalle+=juguete.precioVenta;
+    }
     miCarrito.total+=juguete.precioVenta;
     localStorage.setItem('miCarrito', JSON.stringify(miCarrito));
     this.success=true;
