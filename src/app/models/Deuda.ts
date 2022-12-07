@@ -3,7 +3,7 @@ import { dateToString } from '../generic-functions/dateToString';
 export class Deuda {
   'docId': string;
   'amount': Amount;
-  'label': 'Compra de juguetes';
+  'label' = 'Compra de juguetes';
   'validPeriod': ValidPeriod;
 
   constructor(docId: string, monto: number, inicio: Date, fin: Date) {
@@ -28,6 +28,6 @@ export class ValidPeriod {
 
   constructor(inicio: Date, fin: Date) {
     this.start = dateToString(inicio);
-    this.end = dateToString(fin);
+    this.end = dateToString(fin); 
   }
 }

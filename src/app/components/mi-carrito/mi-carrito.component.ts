@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { addDays } from 'src/app/generic-functions/addDays';
 import { formatearNumero } from 'src/app/generic-functions/formatearNumero';
 import { Carrito } from 'src/app/models/Carrito';
+import { Deuda } from 'src/app/models/Deuda';
+import { AdamspayService } from 'src/app/services/adamspay/adamspay.service';
 import { obtenerCarrito } from './functions/obtenerCarrito';
 
 @Component({
@@ -14,7 +17,8 @@ export class MiCarritoComponent implements OnInit {
   estaVacio!: boolean;
   formatearNumero = formatearNumero;
 
-
+  constructor(private adamsPayService: AdamspayService){}
+  
   ngOnInit(): void {
     this.miCarrito = obtenerCarrito();
     if (this.miCarrito.total==0){
@@ -48,4 +52,20 @@ export class MiCarritoComponent implements OnInit {
     }
   }
 
+  crearDeuda(){
+    let monto = this.miCarrito.total;
+    let inicioValidez = new Date();
+    let finValidez = addDays(inicioValidez,2);
+    let deuda = new Deuda("", monto, inicioValidez, finValidez);
+    // console.log(this.inicioValidez);
+    // console.log(this.finValidez);
+    // console.log(this.deuda);
+    this.adamsPayService.postDeuda(deuda)
+    .subscribe( 
+      response => {
+        console.log("Response", response.debt.payUrl);
+        window.location.href = response.debt.payUrl;
+      }
+    );
+  }
 }

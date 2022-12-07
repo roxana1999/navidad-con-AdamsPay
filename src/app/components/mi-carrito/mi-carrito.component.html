@@ -41,7 +41,7 @@
           <td colspan=3 class="fw-bold">Total:</td>
           <td>{{formatearNumero(miCarrito.total)}} ₲</td>
           <td class="text-start">
-            <button [routerLink]="['/finalizarPedido']" mat-fab extended color="primary" style="box-shadow: none;">
+            <button (click)="crearDeuda()" mat-fab extended color="primary" style="box-shadow: none;">
               <mat-icon>shopping_cart</mat-icon>
               Comprar
             </button>

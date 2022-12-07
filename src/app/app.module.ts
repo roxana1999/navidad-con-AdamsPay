@@ -11,7 +11,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { MostrarJuguetesComponent } from './components/juguetes/mostrar-juguetes/mostrar-juguetes.component';
 import { MiCarritoComponent } from './components/mi-carrito/mi-carrito.component';
-import { CrearDeudaComponent } from './components/adamspay/crear-deuda/crear-deuda.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import { CrearDeudaComponent } from './components/adamspay/crear-deuda/crear-deu
     CrearJugueteComponent,
     MostrarJuguetesComponent,
     MiCarritoComponent,
-    CrearDeudaComponent
   ],
   imports: [
     BrowserModule,
