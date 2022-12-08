@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import { vaciarCarrito } from 'src/app/components/mi-carrito/functions/vaciarCarrito';
 
 
 @Injectable({
@@ -29,6 +30,7 @@ export class LoginService {
     firebase.auth().signOut().then(
       () => {
         localStorage.setItem('UserToken','');
+        vaciarCarrito();
         this.router.navigate(['/']);
       }
     )

@@ -1,22 +1,22 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <ul class="navbar-nav">
     <!-- <li class="nav-item">
-      <a class="nav-link" href="/categorias">Categorias</a>
+      <a class="nav-link" routerLink="/categorias">Categorias</a>
     </li> -->
     <li class="nav-item">
-      <a class="nav-link" href="/juguetes">Juguetes</a>
+      <a class="nav-link" routerLink="/juguetes" routerLinkActive="active" >Juguetes</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/juguetes/crearJuguete">Crear Juguete</a>
+      <a class="nav-link" routerLink="/juguetes/crearJuguete" routerLinkActive="active" >Crear Juguete</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/miCarrito">Mi Carrito</a>
+      <a class="nav-link" routerLink="/miCarrito" routerLinkActive="active" >Mi Carrito</a>
     </li>
     <li *ngIf="!estaLogueado()"  class="nav-item">
-      <a class="nav-link" href="/login">Login</a>
+      <a class="nav-link" routerLink="/login">Login</a>
     </li>
     <li *ngIf="estaLogueado()" class="nav-item">
-      <a class="nav-link" href="/logout">Logout</a>
+      <a class="nav-link" routerLink="/logout">Logout</a>
     </li>
   </ul>
 </nav>

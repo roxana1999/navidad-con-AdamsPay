@@ -3,6 +3,7 @@ import { Juguete } from "./Juguete";
 export class Carrito {
     detalles : Detalle[] = [];
     total = 0;
+    userToken = '';
 }
 
 export class Detalle {

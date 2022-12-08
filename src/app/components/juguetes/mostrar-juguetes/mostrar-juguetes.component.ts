@@ -27,7 +27,7 @@ export class MostrarJuguetesComponent implements OnInit {
   agregarAlCarrito(juguete: Juguete){
     let miCarrito = obtenerCarrito();
     let index = miCarrito.detalles.findIndex( detalle => detalle.juguete.nombre == juguete.nombre);
-    console.log(index);
+    //console.log(index);
     if (index == -1){
       miCarrito.detalles.push(new Detalle(juguete, 1));
     }

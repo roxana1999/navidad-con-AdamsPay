@@ -22,7 +22,6 @@ export class CrearJugueteComponent implements OnInit {
   constructor(private dataServices: DataServices) { }
   
   ngOnInit(): void {
-    console.log("Obtener categorías")
     this.obtenerCategorias();
   }
 

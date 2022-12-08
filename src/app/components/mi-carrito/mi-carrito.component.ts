@@ -14,18 +14,17 @@ import { obtenerCarrito } from './functions/obtenerCarrito';
 })
 export class MiCarritoComponent implements OnInit {
   miCarrito = new Carrito;
-  mensaje="";
   estaVacio!: boolean;
+  warning!: boolean;
+  mensaje="";
   formatearNumero = formatearNumero;
 
   constructor(private adamsPayService: AdamspayService, private loginService: LoginService){}
   
   ngOnInit(): void {
     this.miCarrito = obtenerCarrito();
-    if (this.miCarrito.total==0){
-      this.mensaje="Carrito vacío.";
-      this.estaVacio=true;
-    }
+    if (this.miCarrito.total==0)
+      this.mensaje="Carrito vacío."; this.estaVacio=true;
   }
 
   disminuirCantidad(i: number){
@@ -54,8 +53,13 @@ export class MiCarritoComponent implements OnInit {
   }
 
   crearDeuda(){
-    console.log(this.loginService.getIdToken());
-    return;
+    this.warning=false;
+    if (!this.estaLogueado()){
+      this.warning=true; this.mensaje="Debes iniciar sesión para realizar la compra."
+      return;
+    }
+    if (this.miCarrito.userToken=='') this.miCarrito.userToken = this.loginService.getIdToken()!;
+    
     const monto = this.miCarrito.total;
     const inicioValidez = new Date();
     const finValidez = addDays(inicioValidez,2);
@@ -71,4 +75,11 @@ export class MiCarritoComponent implements OnInit {
       }
     );
   }
+
+  estaLogueado(){
+    const token = this.loginService.getIdToken();
+    if (token == null || token=='') return false;
+    return true;    
+  }
+
 }

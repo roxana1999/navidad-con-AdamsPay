@@ -49,6 +49,11 @@
         </tr>
       </tbody>
     </table>
+    <div *ngIf="warning">
+      <div class="alert alert-warning" role="alert">
+        {{mensaje}}
+      </div>
+    </div>
   </div>
 </div>
 
