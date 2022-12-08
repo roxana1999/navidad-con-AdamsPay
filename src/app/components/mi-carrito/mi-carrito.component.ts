@@ -4,6 +4,7 @@ import { formatearNumero } from 'src/app/generic-functions/formatearNumero';
 import { Carrito } from 'src/app/models/Carrito';
 import { Deuda } from 'src/app/models/Deuda';
 import { AdamspayService } from 'src/app/services/adamspay/adamspay.service';
+import { LoginService } from 'src/app/services/login/login.service';
 import { obtenerCarrito } from './functions/obtenerCarrito';
 
 @Component({
@@ -17,7 +18,7 @@ export class MiCarritoComponent implements OnInit {
   estaVacio!: boolean;
   formatearNumero = formatearNumero;
 
-  constructor(private adamsPayService: AdamspayService){}
+  constructor(private adamsPayService: AdamspayService, private loginService: LoginService){}
   
   ngOnInit(): void {
     this.miCarrito = obtenerCarrito();
@@ -53,10 +54,12 @@ export class MiCarritoComponent implements OnInit {
   }
 
   crearDeuda(){
-    let monto = this.miCarrito.total;
-    let inicioValidez = new Date();
-    let finValidez = addDays(inicioValidez,2);
-    let deuda = new Deuda("", monto, inicioValidez, finValidez);
+    console.log(this.loginService.getIdToken());
+    return;
+    const monto = this.miCarrito.total;
+    const inicioValidez = new Date();
+    const finValidez = addDays(inicioValidez,2);
+    const deuda = new Deuda("", monto, inicioValidez, finValidez);
     // console.log(this.inicioValidez);
     // console.log(this.finValidez);
     // console.log(this.deuda);

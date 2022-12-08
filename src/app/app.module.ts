@@ -11,6 +11,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { MostrarJuguetesComponent } from './components/juguetes/mostrar-juguetes/mostrar-juguetes.component';
 import { MiCarritoComponent } from './components/mi-carrito/mi-carrito.component';
+import { LoginComponent } from './components/login/login.component';
+import { AdamspayService } from './services/adamspay/adamspay.service';
+import { LoginService } from './services/login/login.service';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +23,8 @@ import { MiCarritoComponent } from './components/mi-carrito/mi-carrito.component
     CrearJugueteComponent,
     MostrarJuguetesComponent,
     MiCarritoComponent,
+    LoginComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +36,9 @@ import { MiCarritoComponent } from './components/mi-carrito/mi-carrito.component
     MaterialModule
   ],
   providers: [
-    DataServices
+    DataServices,
+    AdamspayService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
