@@ -21,7 +21,7 @@ export class CategoriasComponent implements OnInit {
   obtenerCategorias(){
     this.dataServices.cargarCategorias().subscribe((misCategorias) => {
       this.listaCategorias = Object.values(misCategorias);
-      console.log(this.listaCategorias);
+      //console.log(this.listaCategorias);
     });
   }
 }

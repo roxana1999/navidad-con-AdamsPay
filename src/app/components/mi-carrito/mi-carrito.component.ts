@@ -7,6 +7,8 @@ import { AdamspayService } from 'src/app/services/adamspay/adamspay.service';
 import { LoginService } from 'src/app/services/login/login.service';
 import { obtenerCarrito } from './functions/obtenerCarrito';
 
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-mi-carrito',
   templateUrl: './mi-carrito.component.html',
@@ -19,9 +21,12 @@ export class MiCarritoComponent implements OnInit {
   mensaje="";
   formatearNumero = formatearNumero;
 
-  constructor(private adamsPayService: AdamspayService, private loginService: LoginService){}
+  constructor(private route: ActivatedRoute, private adamsPayService: AdamspayService, private loginService: LoginService){}
   
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      console.log(params);
+    });
     this.miCarrito = obtenerCarrito();
     if (this.miCarrito.total==0)
       this.mensaje="Carrito vacío."; this.estaVacio=true;
