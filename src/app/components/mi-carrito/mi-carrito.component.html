@@ -1,8 +1,11 @@
 <div class="espacio"></div>
-<div *ngIf="estaVacio">
-  {{mensaje}}
-</div>
-<div *ngIf="miCarrito.detalles.length > 0" style="max-width: 800px;">
+
+<ng-template #estaVacio>
+  <div>
+    Carrito vacío.
+  </div>
+</ng-template>
+<div *ngIf="miCarrito.detalles.length > 0; else estaVacio" style="max-width: 800px;">
   <div class="table-responsive align-middle">
     <table class="table text-end align-middle">
       <thead>

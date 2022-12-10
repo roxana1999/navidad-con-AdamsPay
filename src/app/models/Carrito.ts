@@ -4,6 +4,7 @@ export class Carrito {
     detalles : Detalle[] = [];
     total = 0;
     userToken = '';
+    idDeuda = '';
 }
 
 export class Detalle {
