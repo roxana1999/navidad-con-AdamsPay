@@ -19,6 +19,12 @@
       <a class="nav-link" routerLink="/logout">Logout</a>
     </li>
   </ul>
+  <ul *ngIf="estaLogueado()" class="navbar-nav" style="margin-left: auto;">
+      <li class="nav-item" style="margin-left: auto;">
+        <a style="cursor: default; color:white"  class="nav-link">{{email}}</a>
+      </li>
+  </ul>
+  
 </nav>
 
 <div class="container">

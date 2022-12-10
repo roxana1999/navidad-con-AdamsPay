@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import firebase from 'firebase/compat/app';
+import jwt_decode from "jwt-decode";
 import { LoginService } from './services/login/login.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { LoginService } from './services/login/login.service';
 })
 export class AppComponent implements OnInit {
   title = 'navidad-con-AdamsPay';
+  email = '';
   
   constructor(private loginService: LoginService){}
 
@@ -20,8 +22,15 @@ export class AppComponent implements OnInit {
   }
 
   estaLogueado(){
-    const token = this.loginService.getIdToken();
+    const token : string = this.loginService.getIdToken()!;
     if (token == null || token=='') return false;
+    const tokenDecoded = jwt_decode<any>(token);
+    this.email = tokenDecoded.email;
+    //console.log(console.log(tokenDecoded.email));
     return true;    
+  }
+
+  borrarEmail(){
+    this.email='';
   }
 }
