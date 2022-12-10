@@ -12,7 +12,7 @@ const routes: Routes = [
   // {path:'categorias', component: CategoriasComponent},
   {path:'', redirectTo:'juguetes', pathMatch: 'full'},
   {path:'juguetes', component: MostrarJuguetesComponent},
-  {path:'juguetes/crearJuguete', component: CrearJugueteComponent},
+  // {path:'juguetes/crearJuguete', component: CrearJugueteComponent},
   {path:'miCarrito', component: MiCarritoComponent},
   {path:'login', component: LoginComponent},
   {path:'logout', component: LogoutComponent},
